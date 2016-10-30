@@ -1,3 +1,11 @@
+
+/**********************************************************************************************************************
+*
+*  Usage:
+*  spark-submit --packages org.apache.spark:spark-streaming-kafka_2.10:1.6.0 --class "cxStream" --master yarn-client ./target/SparkStreaming-0.0.1.jar seregion01.cloud.hortonworks.com:2181 mytestgroup topicdz1 1
+*
+**********************************************************************************************************************/
+
 import java.util.HashMap
 
 import org.apache.spark.SparkConf
