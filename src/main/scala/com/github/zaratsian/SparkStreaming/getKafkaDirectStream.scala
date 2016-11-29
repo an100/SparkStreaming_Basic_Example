@@ -50,6 +50,18 @@ object getKafkaDirectStream {
         ssc.awaitTermination()
 
    }
+
+  def getArrayProp(props: => HashMap[String,String], prop: => String): Array[String] = {
+    return props.getOrElse(prop, "").split(",").filter(x => !x.equals(""))
+  }
+
+  def getProps(file: => String): HashMap[String,String] = {
+    var props = new HashMap[String,String]
+    val lines = fromFile(file).getLines
+    lines.foreach(x => if (x contains "=") props.put(x.split("=")(0), if (x.split("=").size > 1) x.split("=")(1) else null))
+    props
+  }
+
 }
 
 //ZEND
