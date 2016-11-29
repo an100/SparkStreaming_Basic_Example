@@ -22,8 +22,8 @@ import org.apache.spark.streaming._
 import org.apache.spark.SparkConf
 
 import org.apache.spark.streaming.kafka._
-
-import kafka.serializer.StringDecoder
+import org.apache.kafka.clients.producer.{KafkaProducer, ProducerConfig, ProducerRecord}
+import _root_.kafka.serializer.StringDecoder
 
 object getKafkaDirectStream {
     def main(args: Array[String]) {
