@@ -16,6 +16,9 @@ DEVICE_ID|HEALTH_STATUS|METRIC1|METRIC2|METRIC3
 101|1|10|20|30.1
 
 
+Phoenix Jar found here:
+wget http://central.maven.org/maven2/org/apache/phoenix/phoenix-spark/4.8.1-HBase-1.1/phoenix-spark-4.8.1-HBase-1.1.jar
+
 **********************************************************************************************************************/
 
 
@@ -46,7 +49,7 @@ object sparkMapWithState {
 
    def main(args: Array[String]) {
       if (args.length < 5) {
-         System.err.println("Usage: /spark/bin/spark-submit --master local[*] --class "sparkMapWithState" --jars /phoenix-spark-4.8.1-HBase-1.1.jar target/SparkStreaming-0.0.1.jar <zkQuorum> <group> <topics> <numThreads> <kafkabroker>")
+         System.err.println("Usage: /spark/bin/spark-submit --master local[*] --class sparkMapWithState --jars /phoenix-spark-4.8.1-HBase-1.1.jar target/SparkStreaming-0.0.1.jar <zkQuorum> <group> <topics> <numThreads> <kafkabroker>")
          System.exit(1)
       }
 
@@ -83,7 +86,7 @@ object sparkMapWithState {
           (p(0), (p(1).toInt,p(2).toInt,p(3).toInt,p(4).toFloat,
 
           // Create new field based on rule:
-          if ( (p(1).toInt == 1) && (p(4).toFloat <= 50) ) "CAUTION" else "OK",
+          if ( (p(1).toInt == 1) && (p(4).toFloat <= 50) ) "CAUTION" else "OK"
 
           ))
       )
